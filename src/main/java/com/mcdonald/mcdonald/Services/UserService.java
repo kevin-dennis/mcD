@@ -29,5 +29,11 @@ public class UserService {
             return "Invalid username or password";
         }
     }
+    public UserModel updateUser(UserModel user){
+        UserModel existinguser = userRepository.findByUserName(user.getUserName());
+        
+        existinguser.setPassword(user.getPassword());
+        return userRepository.save(existinguser);
+    }
 
 }
