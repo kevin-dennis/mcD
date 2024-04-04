@@ -16,7 +16,7 @@ public class UserService {
 
     public String addUserService(UserModel user) {
         userRepository.save(user);
-        return "User registred";
+        return "User registered";
     }
     @Transactional
     public String deleteUser (String userName){
