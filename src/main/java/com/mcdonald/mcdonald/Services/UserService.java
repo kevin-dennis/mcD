@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.mcdonald.mcdonald.Models.UserModel;
 import com.mcdonald.mcdonald.Repositories.UserRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class UserService {
 
@@ -15,6 +17,16 @@ public class UserService {
     public String addUserService(UserModel user) {
         userRepository.save(user);
         return "User registred";
+    }
+    @Transactional
+    public String deleteUser (String userName){
+        if (userRepository.existsByUserName (userName)) {
+        userRepository.deleteByUserName(userName);
+        return "User removed !! " + userName;
+    }
+    else {
+       return "User does not exist ";
+    }
     }
 
     public String loginService(UserModel user) {

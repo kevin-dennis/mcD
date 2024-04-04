@@ -9,4 +9,6 @@ import com.mcdonald.mcdonald.Models.UserModel;
 
 public interface UserRepository extends JpaRepository<UserModel,UUID> {
     UserModel findByUserName(String userName);
+    String deleteByUserName(String userName);
+    boolean existsByUserName (String userName);
 }

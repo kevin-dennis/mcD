@@ -1,6 +1,7 @@
 package com.mcdonald.mcdonald.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ public class MainController {
 
     @Autowired
     private UserService userService;
+    
 
     @PostMapping("user")
     public String addUser(@RequestHeader String userName, @RequestHeader String password) {
@@ -40,5 +42,10 @@ public class MainController {
 	    public UserModel updateUser(@RequestBody UserModel user) {
 	        return userService.updateUser(user);
 	    }
+        @DeleteMapping("/deleteuser/{userName}")
+	    public String deletetUser(@PathVariable String  userName) {
+	        return userService.deleteUser(userName);
+	    }
 
 }
+
